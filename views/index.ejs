@@ -5,7 +5,7 @@
   <% restaurantes.forEach(rest => { %>
     <div class="col d-flex">
       <div class="card w-100">
-        <img src="/uploads/<%= rest.imagen %>" class="card-img-top" alt="<%= rest.nombre %>">
+        <img src="/uploads/<%= rest.logo %>" class="card-img-top" alt="<%= rest.nombre %>">
         <div class="card-body text-center">
           <h5 class="card-title"><%= rest.nombre %></h5>
           <a href="/restaurantes/<%= rest.id %>" class="btn btn-primary">Ver hamburguesas</a>
