@@ -1,0 +1,19 @@
+<%- include("./partials/header") %>
+
+<h1 class="text-center mb-4">🍔 Burger Week</h1>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% restaurantes.forEach(rest => { %>
+    <div class="col d-flex">
+      <div class="card w-100">
+        <img src="/uploads/<%= rest.imagen %>" class="card-img-top" alt="<%= rest.nombre %>">
+        <div class="card-body text-center">
+          <h5 class="card-title"><%= rest.nombre %></h5>
+          <a href="/restaurantes/<%= rest.id %>" class="btn btn-primary">Ver hamburguesas</a>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+
+<%- include("./partials/footer") %>

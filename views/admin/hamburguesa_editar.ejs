@@ -1,0 +1,35 @@
+<%- include("../partials/header") %>
+<div class="container mt-5">
+  <h2>Editar Hamburguesa</h2>
+  <form action="/adminH/hamburguesas/editar/<%= hamburguesa.id %>" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label>Nombre:</label>
+      <input type="text" name="nombre" class="form-control" value="<%= hamburguesa.nombre %>" required>
+    </div>
+    <div class="mb-3">
+      <label>Descripción:</label>
+      <textarea name="descripcion" class="form-control" required><%= hamburguesa.descripcion %></textarea>
+    </div>
+    <div class="mb-3">
+      <label>Calificación:</label>
+      <input type="number" name="calificacion" class="form-control" step="0.1" min="0" max="5" value="<%= hamburguesa.calificacion %>" required>
+    </div>
+    <div class="mb-3">
+      <label>Imagen actual:</label><br>
+      <% if (hamburguesa.imagen) { %>
+        <img src="/uploads/<%= hamburguesa.imagen %>" width="100"><br>
+      <% } %>
+      <label>Nuevo Imagen:</label>
+      <input type="file" name="imagen" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label>Restaurante:</label>
+      <select name="restaurante_id" class="form-control" required>
+        <% restaurantes.forEach(r => { %>
+          <option value="<%= r.id %>" <%= r.id == hamburguesa.restaurante_id ? "selected" : "" %>><%= r.nombre %></option>
+        <% }) %>
+      </select>
+    </div>
+    <button class="btn btn-primary">Actualizar</button>
+  </form>
+</div>

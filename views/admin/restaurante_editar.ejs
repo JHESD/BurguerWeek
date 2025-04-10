@@ -1,0 +1,19 @@
+<%- include("../partials/header") %>
+<div class="container mt-5">
+  <h2>Editar Restaurante</h2>
+  <form action="/admin/restaurantes/editar/<%= restaurante.id %>" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label>Nombre:</label>
+      <input type="text" name="nombre" class="form-control" value="<%= restaurante.nombre %>" required>
+    </div>
+    <div class="mb-3">
+      <label>Logo actual:</label><br>
+      <% if (restaurante.logo) { %>
+        <img src="/uploads/<%= restaurante.logo %>" width="100"><br>
+      <% } %>
+      <label>Nuevo logo:</label>
+      <input type="file" name="logo" class="form-control">
+    </div>
+    <button class="btn btn-primary">Actualizar</button>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<%- include("../partials/header") %>
+<div class="container mt-5">
+  <h2>Nueva Hamburguesa</h2>
+  <form action="/adminH/saveburguer" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label>Nombre:</label>
+      <input type="text" name="nombre" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Descripción:</label>
+      <textarea name="descripcion" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label>Calificación:</label>
+      <input type="number" name="calificacion" class="form-control" step="0.1" min="0" max="5" required>
+    </div>
+    <div class="mb-3">
+      <label>Imagen:</label>
+      <input type="file" name="imagen" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label>Restaurante:</label>
+      <select name="restaurante_id" class="form-control" required>
+        <% restaurantes.forEach(r => { %>
+          <option value="<%= r.id %>"><%= r.nombre %></option>
+        <% }) %>
+      </select>
+    </div>
+    <button class="btn btn-primary">Guardar</button>
+  </form>
+</div>

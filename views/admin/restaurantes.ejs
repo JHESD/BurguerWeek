@@ -1,0 +1,32 @@
+<%- include("../partials/header") %>
+<div class="container mt-5">
+  <h2>Administrar Restaurantes</h2>
+  <a href="/admin/restaurantes/nuevo" class="btn btn-success mb-3">+ Nuevo Restaurante</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Logo</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% restaurantes.forEach(r => { %>
+        <tr>
+          <td>
+            <% if (r.logo) { %>
+              <img src="/uploads/<%= r.logo %>" width="80">
+            <% } %>
+          </td>
+          <td><%= r.nombre %></td>
+          <td>
+            <a href="/admin/restaurantes/editar/<%= r.id %>" class="btn btn-warning btn-sm">Editar</a>
+            <form action="/admin/restaurantes/eliminar/<%= r.id %>" method="POST" style="display:inline-block">
+              <button class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar restaurante?')">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,36 @@
+<%- include("../partials/header") %>
+<div class="container mt-5">
+  <h2>Hamburguesas</h2>
+  <a href="/adminH/hamburguesas/nuevo" class="btn btn-success mb-3">+ Nueva Hamburguesa</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Restaurante</th>
+        <th>Calificación</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% hamburguesas.forEach(h => { %>
+        <tr>
+          <td>
+            <% if (h.foto) { %>
+              <img src="/uploads/<%= h.foto %>" width="80">
+            <% } %>
+          </td>
+          <td><%= h.nombre %></td>
+          <td><%= h.Restaurante?.nombre %></td>
+          <td><%= h.calificacion %></td>
+          <td>
+            <a href="/adminH/hamburguesas/editar/<%= h.id %>" class="btn btn-warning btn-sm">Editar</a>
+            <form action="/adminH/hamburguesas/eliminar/<%= h.id %>" method="POST" style="display:inline-block">
+              <button class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar hamburguesa?')">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
